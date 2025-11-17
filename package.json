@@ -1,0 +1,25 @@
+{
+  "name": "proyecto-tienda-videogames",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henryfabricio27-droid/Tienda-videogames.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/henryfabricio27-droid/Tienda-videogames/issues"
+  },
+  "homepage": "https://github.com/henryfabricio27-droid/Tienda-videogames#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.17",
+    "tailwindcss": "^4.1.17"
+  }
+}
