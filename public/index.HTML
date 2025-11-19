@@ -6,37 +6,37 @@
   <title>Tienda Videojuegos</title>
 
   <!-- Favicon -->
- <link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK7iYSfxlRzMMTOi7U3hZ5zqIvyPx9PvFqzw&s">
+  <link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK7iYSfxlRzMMTOi7U3hZ5zqIvyPx9PvFqzw&s">
 
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-100">
 
-  <div class="max-w-6xl mx-auto p-4">
+  <div class="max-w-6xl mx-auto p-2 sm:p-4 md:p-6">
 
-    <!-- Titulo  Dinamico -->
-    <h2 id="titulo-dinamico" class="text-3xl font-bold text-slate-900 mb-1">
+    <!-- Titulo Dinamico -->
+    <h2 id="titulo-dinamico" class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-1">
       Video juegos en oferta
     </h2>
 
     <!-- Subtitulo Dinamico -->
-    <p id="subtitulo-dinamico" class="text-slate-600 mb-4">
+    <p id="subtitulo-dinamico" class="text-sm sm:text-base md:text-lg text-slate-600 mb-4">
       Mostrando juegos disponibles
     </p>
 
-    <!-- Filtros  -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+    <!-- Filtros -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
 
-      <div class="flex gap-2 md:col-span-2">
+      <div class="flex flex-col sm:flex-row gap-2 md:col-span-2">
         <input id="input-busqueda" type="text" placeholder="Buscar videojuego..."
-          class="flex-1 p-2 rounded-lg border border-slate-300" />
+          class="flex-1 p-2 sm:p-3 rounded-lg border border-slate-300" />
         <button id="btn-buscar"
-          class="px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800">
+          class="px-4 py-2 sm:px-6 sm:py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800">
           Buscar
         </button>
       </div>
 
-      <select id="filtro-plataforma" class="p-2 rounded-lg border border-slate-300">
+      <select id="filtro-plataforma" class="p-2 sm:p-3 rounded-lg border border-slate-300">
         <option value="">Todas las plataformas</option>
         <option value="pc">PC</option>
         <option value="steam">PS5</option>
@@ -44,11 +44,12 @@
         <option value="xbox">Xbox</option>
       </select>
 
-      <select id="orden" class="p-2 rounded-lg border border-slate-300">
+      <select id="orden" class="p-2 sm:p-3 rounded-lg border border-slate-300">
         <option value="">Ordenar por...</option>
         <option value="name">Nombre A-Z</option>
         <option value="rating">Mejor juego</option>
         <option value="recent">Más recientes</option>
+        <option value="price">Por precio</option>
       </select>
     </div>
 
@@ -57,37 +58,38 @@
     <p id="estado-error" class="text-red-600 mb-4 hidden">Error al cargar datos</p>
 
     <!-- GRID -->
-    <div id="grid-videojuegos"
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+    <div id="grid-videojuegos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <!-- Aquí se insertan los juegos dinámicamente -->
     </div>
   </div>
 
   <!-- MODAL DETALLE -->
-  <div id="modal-detalle" class="fixed inset-0 bg-black/50 hidden justify-center items-center p-4">
-    <div class="bg-white w-full max-w-md rounded-lg p-4 shadow-lg">
+  <div id="modal-detalle" class="fixed inset-0 bg-black/50 hidden justify-center items-center p-2 sm:p-4">
+    <div class="bg-white w-full max-w-sm sm:max-w-md md:max-w-lg rounded-lg p-4 sm:p-6 shadow-lg">
 
-      <h2 class="text-xl font-bold text-center mb-4">Detalle del videojuego</h2>
+      <h2 class="text-xl sm:text-2xl font-bold text-center mb-4">Detalle del videojuego</h2>
 
       <img id="modal-imagen" class="w-full h-48 object-cover rounded-lg mb-3" />
 
-      <h3 id="modal-titulo" class="text-xl font-bold mb-2"></h3>
+      <h3 id="modal-titulo" class="text-xl sm:text-2xl font-bold mb-2"></h3>
 
       <p id="modal-precio" class="text-slate-900 font-semibold mb-2"></p>
 
-      <p id="modal-rating" class="text-sm text-slate-600 mb-3"></p>
+      <p id="modal-rating" class="text-sm sm:text-base text-slate-600 mb-3"></p>
 
       <a id="modal-link" target="_blank"
-        class="block bg-slate-900 text-white text-center py-2 rounded-lg mb-2">
+        class="block bg-slate-900 text-white text-center py-2 sm:py-3 rounded-lg mb-2">
         Comprar
       </a>
 
       <button id="cerrar-modal"
-        class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-500">
+        class="w-full bg-red-600 text-white py-2 sm:py-3 rounded-lg hover:bg-red-500">
         Cerrar
       </button>
 
     </div>
   </div>
+
   <script src="script.js"></script>
 
 </body>
