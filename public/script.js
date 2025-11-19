@@ -8,7 +8,7 @@ const btnBuscar = document.querySelector("#btn-buscar");
 const filtroPlataforma = document.querySelector("#filtro-plataforma");
 const ordenSelect = document.querySelector("#orden");
 
-// TÍTULO Y SUBTÍTULO DINÁMICO
+// TITULO Y SUBTITULO DINAMICO
 const tituloDinamico = document.querySelector("#titulo-dinamico");
 const subtituloDinamico = document.querySelector("#subtitulo-dinamico");
 
@@ -36,7 +36,10 @@ async function cargarVideojuegos() {
 
     estadoCarga.classList.add("hidden");
 
-    actualizarTitulos(juegosCargados, "", "", "");
+    // Ordenar por precio de menor a mayor por defecto
+    juegosCargados.sort((a, b) => Number(a.salePrice) - Number(b.salePrice));
+
+    actualizarTitulos(juegosCargados, "", "", "price");
     renderizarVideojuegos(juegosCargados);
 
   } catch (error) {
@@ -45,7 +48,7 @@ async function cargarVideojuegos() {
   }
 }
 
-// ACTUALIZAR TÍTULO + SUBTÍTULO
+// ACTUALIZAR TITULO + SUBTITULO
 function actualizarTitulos(lista, buscar, plataforma, orden) {
   if (buscar) {
     tituloDinamico.textContent = `Resultados para: "${buscar}"`;
@@ -59,6 +62,7 @@ function actualizarTitulos(lista, buscar, plataforma, orden) {
   if (orden === "name") texto.push("Ordenado por nombre");
   if (orden === "rating") texto.push("Ordenado por mejor rating");
   if (orden === "recent") texto.push("Más recientes primero");
+  if (orden === "price") texto.push("Ordenado por precio: menor a mayor");
 
   texto.push(`Mostrando ${lista.length} juegos`);
 
@@ -154,7 +158,7 @@ inputBusqueda.addEventListener("keypress", (e) => {
 filtroPlataforma.addEventListener("change", filtrar);
 ordenSelect.addEventListener("change", filtrar);
 
-// FUNCIÓN DE FILTRADO
+// FUNCION DE FILTRADO
 function filtrar() {
   let resultado = [...juegosCargados];
 
@@ -201,10 +205,13 @@ function filtrar() {
     resultado.sort((a, b) => Number(b.lastChange) - Number(a.lastChange));
   }
 
+  if (orden === "price") {
+    resultado.sort((a, b) => Number(a.salePrice) - Number(b.salePrice));
+  }
+
   actualizarTitulos(resultado, buscar, plataforma, orden);
   renderizarVideojuegos(resultado);
 }
 
 // INICIO
 cargarVideojuegos();
-
